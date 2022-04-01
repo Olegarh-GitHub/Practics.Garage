@@ -1,10 +1,12 @@
-﻿using Practics.Garage.Domain.Models;
+﻿extern alias App;
+
+using Practics.Garage.Domain.Models;
 using Practics.Garage.Forms.Controls;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Linq;
-using Practics.Garage.Application.Facades;
+
 using System;
+using App::Practics.Garage.Application.Facades;
 
 namespace Practics.Garage.Forms
 {

@@ -49,7 +49,7 @@ namespace Practics.Garage.Forms
                 position.y += 25;
 
                 var textBox = EditorExtensions.GenerateEditorFor(property.Name, new Point(position.x, position.y));
-      
+                
                 editorsPanel.Controls.Add(label);
                 editorsPanel.Controls.Add(textBox);
 

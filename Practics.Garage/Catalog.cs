@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Practics.Garage.Domain.Models;
+using Practics.Garage.Infrastructure.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +21,7 @@ namespace Practics.Garage
 
         private void FillCatalog()
         {
-
+            var entityis = new Repository<Product>()
         }
     }
 }

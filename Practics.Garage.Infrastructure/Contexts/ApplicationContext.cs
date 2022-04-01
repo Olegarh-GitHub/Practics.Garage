@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Practics.Garage.Infrastructure
+namespace Practics.Garage.Infrastructure.Contexts
 {
     public sealed class ApplicationContext : DbContext
     {

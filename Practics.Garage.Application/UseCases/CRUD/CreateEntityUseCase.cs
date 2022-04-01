@@ -8,6 +8,11 @@ namespace Practics.Garage.Application.UseCases.CRUD
     public class CreateEntityRequest<TEntity> where TEntity : Entity
     {
         public TEntity Entity { get; set; }
+
+        public CreateEntityRequest(TEntity entity)
+        {
+            Entity = entity;
+        }
     }
 
     public class CreateEntityResponse<TEntity> where TEntity : Entity

@@ -7,6 +7,11 @@ namespace Practics.Garage.Application.UseCases.CRUD
     public class UpdateEntityRequest<TEntity> where TEntity : Entity
     {
         public TEntity Entity { get; set; }
+
+        public UpdateEntityRequest(TEntity entity)
+        {
+            Entity = entity;
+        }
     }
 
     public class UpdateEntityResponse<TEntity> where TEntity : Entity

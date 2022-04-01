@@ -7,6 +7,11 @@ namespace Practics.Garage.Application.UseCases.CRUD
     public class DeleteEntityRequest<TEntity> where TEntity : Entity
     {
         public TEntity Entity { get; set; }
+
+        public DeleteEntityRequest(TEntity entity)
+        {
+            Entity = entity;
+        }
     }
 
     public class DeleteEntityResponse

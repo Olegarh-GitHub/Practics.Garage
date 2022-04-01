@@ -13,6 +13,11 @@ namespace Practics.Garage.Application.UseCases.CRUD
     {
         private IRepository<TEntity> _repository;
 
+        public ReadEntityUseCase(IRepository<TEntity> repository)
+        {
+            _repository = repository;
+        }
+
         public ReadEntityResponse<TEntity> Execute()
         {
             return new ReadEntityResponse<TEntity>() { Entities = _repository.Read() };

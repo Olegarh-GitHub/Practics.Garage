@@ -26,7 +26,7 @@ namespace Practics.Garage.Forms
 
         private void addVehiclePartButton_Click(object sender, EventArgs e)
         {
-            var addForm = new AddForm(new Product() { Name = "Пиво" });
+            var addForm = new AddProductForm();
             addForm.Show();
         }
     }

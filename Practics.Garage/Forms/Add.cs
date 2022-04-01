@@ -14,12 +14,14 @@ namespace Practics.Garage.Forms
     public partial class AddForm : Form
     {
         public Entity Entity { get; set; }
+        private Button _buttonAdd;
 
         public AddForm(Entity entity)
         {         
             InitializeComponent();
             
             Entity = entity;
+
             GenerateCreateForm();
         }
 
@@ -53,6 +55,8 @@ namespace Practics.Garage.Forms
 
                 position.y += 50;
             }
+
+           // editorsPanel.Co
         }
 
     }

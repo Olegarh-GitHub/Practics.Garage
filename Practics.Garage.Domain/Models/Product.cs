@@ -9,10 +9,17 @@ namespace Practics.Garage.Domain.Models
 {
     public class Product : Entity
     {
+        [DisplayName("Наименование товара")]
         public string Name { get; set; }
+
+        [DisplayName("Описание товара")]
         public string Description { get; set; }  
         public Guid IdManufacturer { get; set; }
+
+        [ComplexProperty]
         public Manufacturer Manufacturer { get; set; }
+
+        [ComplexProperty]
         public List<Specification> Specifications { get; set; } = new ();
     }
 }

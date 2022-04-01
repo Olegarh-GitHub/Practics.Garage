@@ -1,6 +1,6 @@
-﻿namespace Practics.Garage
+﻿namespace Practics.Garage.Forms
 {
-    partial class Catalog
+    partial class CatalogForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,16 +29,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Catalog));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CatalogForm));
             this.garageTabControl = new System.Windows.Forms.TabControl();
             this.catalogTabPage = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.catalogPicture = new System.Windows.Forms.Panel();
-            this.catalogPanel = new System.Windows.Forms.Panel();
-            this.addVehiclePartButton = new System.Windows.Forms.Button();
-            this.buyVehiclePartButton = new System.Windows.Forms.Button();
-            this.orderByComboBox = new System.Windows.Forms.ComboBox();
             this.orderByLabel = new System.Windows.Forms.Label();
+            this.orderByComboBox = new System.Windows.Forms.ComboBox();
+            this.buyVehiclePartButton = new System.Windows.Forms.Button();
+            this.addVehiclePartButton = new System.Windows.Forms.Button();
+            this.catalogPanel = new System.Windows.Forms.Panel();
+            this.catalogPicture = new System.Windows.Forms.Panel();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.garageTabControl.SuspendLayout();
             this.catalogTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -69,50 +69,14 @@
             this.catalogTabPage.TabIndex = 0;
             this.catalogTabPage.Text = "Каталог";
             // 
-            // tabPage2
+            // orderByLabel
             // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(752, 584);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            // 
-            // catalogPicture
-            // 
-            this.catalogPicture.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("catalogPicture.BackgroundImage")));
-            this.catalogPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.catalogPicture.Location = new System.Drawing.Point(-20, -7);
-            this.catalogPicture.Name = "catalogPicture";
-            this.catalogPicture.Size = new System.Drawing.Size(776, 98);
-            this.catalogPicture.TabIndex = 1;
-            // 
-            // catalogPanel
-            // 
-            this.catalogPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.catalogPanel.Location = new System.Drawing.Point(6, 97);
-            this.catalogPanel.Name = "catalogPanel";
-            this.catalogPanel.Size = new System.Drawing.Size(565, 481);
-            this.catalogPanel.TabIndex = 2;
-            // 
-            // addVehiclePartButton
-            // 
-            this.addVehiclePartButton.Location = new System.Drawing.Point(577, 97);
-            this.addVehiclePartButton.Name = "addVehiclePartButton";
-            this.addVehiclePartButton.Size = new System.Drawing.Size(169, 23);
-            this.addVehiclePartButton.TabIndex = 3;
-            this.addVehiclePartButton.Text = "Добавить товар";
-            this.addVehiclePartButton.UseVisualStyleBackColor = true;
-            // 
-            // buyVehiclePartButton
-            // 
-            this.buyVehiclePartButton.Location = new System.Drawing.Point(577, 126);
-            this.buyVehiclePartButton.Name = "buyVehiclePartButton";
-            this.buyVehiclePartButton.Size = new System.Drawing.Size(169, 23);
-            this.buyVehiclePartButton.TabIndex = 4;
-            this.buyVehiclePartButton.Text = "Приобрести товар";
-            this.buyVehiclePartButton.UseVisualStyleBackColor = true;
+            this.orderByLabel.AutoSize = true;
+            this.orderByLabel.Location = new System.Drawing.Point(670, 537);
+            this.orderByLabel.Name = "orderByLabel";
+            this.orderByLabel.Size = new System.Drawing.Size(76, 15);
+            this.orderByLabel.TabIndex = 6;
+            this.orderByLabel.Text = "Сортировка:";
             // 
             // orderByComboBox
             // 
@@ -124,23 +88,61 @@
             this.orderByComboBox.Size = new System.Drawing.Size(169, 23);
             this.orderByComboBox.TabIndex = 5;
             // 
-            // orderByLabel
+            // buyVehiclePartButton
             // 
-            this.orderByLabel.AutoSize = true;
-            this.orderByLabel.Location = new System.Drawing.Point(670, 537);
-            this.orderByLabel.Name = "orderByLabel";
-            this.orderByLabel.Size = new System.Drawing.Size(76, 15);
-            this.orderByLabel.TabIndex = 6;
-            this.orderByLabel.Text = "Сортировка:";
+            this.buyVehiclePartButton.Location = new System.Drawing.Point(577, 126);
+            this.buyVehiclePartButton.Name = "buyVehiclePartButton";
+            this.buyVehiclePartButton.Size = new System.Drawing.Size(169, 23);
+            this.buyVehiclePartButton.TabIndex = 4;
+            this.buyVehiclePartButton.Text = "Приобрести товар";
+            this.buyVehiclePartButton.UseVisualStyleBackColor = true;
             // 
-            // catalog
+            // addVehiclePartButton
+            // 
+            this.addVehiclePartButton.Location = new System.Drawing.Point(577, 97);
+            this.addVehiclePartButton.Name = "addVehiclePartButton";
+            this.addVehiclePartButton.Size = new System.Drawing.Size(169, 23);
+            this.addVehiclePartButton.TabIndex = 3;
+            this.addVehiclePartButton.Text = "Добавить товар";
+            this.addVehiclePartButton.UseVisualStyleBackColor = true;
+            this.addVehiclePartButton.Click += new System.EventHandler(this.addVehiclePartButton_Click);
+            // 
+            // catalogPanel
+            // 
+            this.catalogPanel.AutoScroll = true;
+            this.catalogPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.catalogPanel.Location = new System.Drawing.Point(6, 97);
+            this.catalogPanel.Name = "catalogPanel";
+            this.catalogPanel.Size = new System.Drawing.Size(565, 481);
+            this.catalogPanel.TabIndex = 2;
+            // 
+            // catalogPicture
+            // 
+            this.catalogPicture.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("catalogPicture.BackgroundImage")));
+            this.catalogPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.catalogPicture.Location = new System.Drawing.Point(-20, -7);
+            this.catalogPicture.Name = "catalogPicture";
+            this.catalogPicture.Size = new System.Drawing.Size(776, 98);
+            this.catalogPicture.TabIndex = 1;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(752, 584);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            // 
+            // CatalogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 636);
             this.Controls.Add(this.garageTabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Name = "CatalogForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Магазин автомобильных запасных частей на Ломжинской 14";
             this.garageTabControl.ResumeLayout(false);

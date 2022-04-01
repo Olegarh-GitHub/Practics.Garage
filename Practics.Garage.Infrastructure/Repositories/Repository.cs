@@ -1,17 +1,15 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Practics.Garage.Domain.Models.Base;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Practics.Garage.Infrastructure.Contexts;
 using System.Threading.Tasks;
 using Practics.Garage.Infrastructure.AutoMapping;
+using Practics.Garage.Domain.Repository.Base;
 
 namespace Practics.Garage.Infrastructure.Repositories
 {
-    public class Repository<TEntity>
+    public class Repository<TEntity> : IRepository<TEntity>
     where TEntity : Entity
     {
         private readonly IMapper _mapper;
@@ -25,7 +23,7 @@ namespace Practics.Garage.Infrastructure.Repositories
             _dbSet = _context.Set<TEntity>();
         }
 
-        public async Task<TEntity> CreateAsync(TEntity entity)
+        public async Task<TEntity> Create(TEntity entity)
         {
             var existedEntity = await _dbSet.FirstOrDefaultAsync(x => x.IdGuid == entity.IdGuid);
 
@@ -38,7 +36,12 @@ namespace Practics.Garage.Infrastructure.Repositories
             return entity;
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity)
+        public IQueryable<TEntity> Read()
+        {
+            return _dbSet.AsQueryable();
+        }
+
+        public async Task<TEntity> Update(TEntity entity)
         {
             var existedEntity = await _dbSet.FirstOrDefaultAsync(x => x.IdGuid == entity.IdGuid);
 
@@ -53,12 +56,7 @@ namespace Practics.Garage.Infrastructure.Repositories
             return existedEntity;
         }
 
-        public IQueryable<TEntity> Read()
-        {
-            return _dbSet.AsQueryable();
-        }
-
-        public async Task<bool> DeleteAsync(TEntity entity)
+        public async Task<bool> Delete(TEntity entity)
         {
             var existedEntity = await _dbSet.FirstOrDefaultAsync(x => x.IdGuid == entity.IdGuid);
 

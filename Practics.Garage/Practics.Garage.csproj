@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Practics.Garage.Application\Practics.Garage.Application.csproj" />
       <ProjectReference Include="..\Practics.Garage.Infrastructure\Practics.Garage.Infrastructure.csproj" />
     </ItemGroup>
 

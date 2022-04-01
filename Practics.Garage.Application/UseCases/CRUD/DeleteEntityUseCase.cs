@@ -24,8 +24,8 @@ namespace Practics.Garage.Application.UseCases.CRUD
 
         public async Task<DeleteEntityResponse> Execute(DeleteEntityRequest<TEntity> request)
         {
-            await _repository.Delete(request.Entity);
-            return new DeleteEntityResponse() { Success = true };
+            var deleted = await _repository.Delete(request.Entity);
+            return new DeleteEntityResponse() { Success = deleted };
         }
     }
 }

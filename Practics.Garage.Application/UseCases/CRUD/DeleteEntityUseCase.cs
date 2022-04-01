@@ -7,6 +7,11 @@ namespace Practics.Garage.Application.UseCases.CRUD
     public class DeleteEntityRequest<TEntity> where TEntity : Entity
     {
         public TEntity Entity { get; set; }
+
+        public DeleteEntityRequest(TEntity entity)
+        {
+            Entity = entity;
+        }
     }
 
     public class DeleteEntityResponse
@@ -24,8 +29,8 @@ namespace Practics.Garage.Application.UseCases.CRUD
 
         public async Task<DeleteEntityResponse> Execute(DeleteEntityRequest<TEntity> request)
         {
-            await _repository.Delete(request.Entity);
-            return new DeleteEntityResponse() { Success = true };
+            var deleted = await _repository.Delete(request.Entity);
+            return new DeleteEntityResponse() { Success = deleted };
         }
     }
 }

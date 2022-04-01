@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Practics.Garage.Infrastructure.AutoMapping;
 using Practics.Garage.Domain.Repository.Base;
 
-namespace Practics.Garage.Infrastructure.Repositories
+namespace Practics.Garage.Infrastructure.Repositories.Base
 {
     public class Repository<TEntity> : IRepository<TEntity>
     where TEntity : Entity

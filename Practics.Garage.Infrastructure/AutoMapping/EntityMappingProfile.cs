@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
 using Practics.Garage.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Practics.Garage.Infrastructure.AutoMapping
 {

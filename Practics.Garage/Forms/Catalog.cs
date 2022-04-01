@@ -10,18 +10,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Practics.Garage
+namespace Practics.Garage.Forms
 {
-    public partial class Catalog : Form
+    public partial class CatalogForm : Form
     {
-        public Catalog()
+        public CatalogForm()
         {
             InitializeComponent();
         }
 
         private void FillCatalog()
         {
-            var entityis = new Repository<Product>()
+
+        }
+
+        private void addVehiclePartButton_Click(object sender, EventArgs e)
+        {
+            var addForm = new AddForm(new Product() { Name = "Пиво" });
+            addForm.Show();
         }
     }
 }

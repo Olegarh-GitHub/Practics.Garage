@@ -1,6 +1,7 @@
 ﻿using Practics.Garage.Application.UseCases.CRUD;
 using Practics.Garage.Domain.Models.Base;
 using Practics.Garage.Domain.Repository.Base;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Practics.Garage.Application.Facades.Base
@@ -23,11 +24,17 @@ namespace Practics.Garage.Application.Facades.Base
             _updateUseCase = new UpdateEntityUseCase<TEntity>(_repository);
             _deleteUseCase = new DeleteEntityUseCase<TEntity>(_repository);
         }
+
         public async Task<TEntity> Create(TEntity entity)
         {
             var request = new CreateEntityRequest<TEntity>(entity);
             var response = await _createUseCase.Execute(request);
             return response.Entity;
+        }
+
+        public IQueryable<TEntity> Read()
+        {
+            return _readUseCase.Execute().Entities;
         }
 
         public async Task<TEntity> Update(TEntity entity)

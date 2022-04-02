@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Practics.Garage.Domain.Models
 {
-    public class Specification : Entity
+    public class Specification : Entity, IHaveNameEntity
     {
         [DisplayName("Наименование спецификации")]
         public string Name { get; set; }

@@ -16,5 +16,8 @@
     <Compile Update="Forms\Controls\InputControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Forms\Controls\ManufacturerComboBoxControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -6,6 +6,7 @@ using Practics.Garage.Infrastructure.Contexts;
 using System.Threading.Tasks;
 using Practics.Garage.Infrastructure.AutoMapping;
 using Practics.Garage.Domain.Repository.Base;
+using System;
 
 namespace Practics.Garage.Infrastructure.Repositories.Base
 {
@@ -49,6 +50,8 @@ namespace Practics.Garage.Infrastructure.Repositories.Base
                 return null;
 
             _mapper.Map(entity, existedEntity);
+
+            existedEntity.UpdatedAt = DateTime.Now;
 
             _dbSet.Update(existedEntity);
             await _context.SaveChangesAsync();

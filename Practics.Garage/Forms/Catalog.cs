@@ -1,4 +1,8 @@
-﻿using Practics.Garage.Domain.Models;
+﻿extern alias App;
+
+using App::Practics.Garage.Application.Facades;
+using Microsoft.Extensions.DependencyInjection;
+using Practics.Garage.Domain.Models;
 using Practics.Garage.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
@@ -14,8 +18,14 @@ namespace Practics.Garage.Forms
 {
     public partial class CatalogForm : Form
     {
+        private readonly ManufacturerFacade _manufacturerFacade;
+        private readonly ProductFacade _productFacade;
+
         public CatalogForm()
         {
+            _manufacturerFacade = Program.ServiceProvider.GetService<ManufacturerFacade>();
+            _productFacade = Program.ServiceProvider.GetService<ProductFacade>();
+
             InitializeComponent();
         }
 
@@ -26,8 +36,9 @@ namespace Practics.Garage.Forms
 
         private void addVehiclePartButton_Click(object sender, EventArgs e)
         {
-            var addForm = new AddProductForm();
+            var addForm = new AddProductForm(this, _manufacturerFacade, _productFacade);
             addForm.Show();
+            Enabled = false;
         }
     }
 }

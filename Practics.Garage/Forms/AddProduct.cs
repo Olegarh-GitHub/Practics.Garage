@@ -7,19 +7,29 @@ using System.Windows.Forms;
 
 using System;
 using App::Practics.Garage.Application.Facades;
+using System.Linq;
 
 namespace Practics.Garage.Forms
 {
     public partial class AddProductForm : Form
     {
-        private ProductFacade _productFacade;
-        public AddProductForm()
+        private readonly ProductFacade _productFacade;
+        private readonly ManufacturerFacade _manufacturerFacade;
+        private ManufacturerComboBoxControl _manufacturerComboBoxControl;
+        private Form _parent;
+        public AddProductForm(Form parent, ManufacturerFacade manufacturerFacade, ProductFacade productFacade)
         {
-            InitializeComponent();
+            _parent = parent;
+
+            _productFacade = productFacade;
+            _manufacturerFacade = manufacturerFacade;
+            _manufacturerComboBoxControl = new ManufacturerComboBoxControl(manufacturerFacade, 358, 23);
             
+            InitializeComponent();
+            manufacturersPanel.Controls.Add(_manufacturerComboBoxControl);
         }
 
-        private void AddProductForm_Load(object sender, System.EventArgs e)
+        private void AddProductForm_Load(object sender, EventArgs e)
         {
 
         }
@@ -52,7 +62,11 @@ namespace Practics.Garage.Forms
 
         private Manufacturer GetManufacturer()
         {
-            throw new NotImplementedException();
+            var idManufacturer = _manufacturerComboBoxControl.SelectedValue;
+
+            return _manufacturerFacade
+                .Read()
+                .FirstOrDefault(x => x.IdGuid == idManufacturer);
         }
 
         private async void addButton_Click(object sender, EventArgs e)
@@ -60,10 +74,12 @@ namespace Practics.Garage.Forms
             var specifications = GetSpecifications();
             var name = GetName();
             var description = GetDescription();
-            Manufacturer manufacturer = GetManufacturer();
-
+            var manufacturer = GetManufacturer();
 
             await _productFacade.Create(name, description, manufacturer.IdGuid, specifications);
+
+            Close();
+            _parent.Enabled = true;
         }
     }
 }

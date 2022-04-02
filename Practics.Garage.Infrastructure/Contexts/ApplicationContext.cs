@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Practics.Garage.Domain.Models;
+using Practics.Garage.Domain.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,6 @@ namespace Practics.Garage.Infrastructure.Contexts
 {
     public sealed class ApplicationContext : DbContext
     {
-        private string _connectionString => "Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = Garage";
         public DbSet<Product> Products { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<Specification> Specifications { get; set; }
@@ -20,7 +20,24 @@ namespace Practics.Garage.Infrastructure.Contexts
             Database.EnsureCreated();
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(_connectionString);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>().HasKey(entity => entity.IdGuid);
+            modelBuilder.Entity<Product>()
+                .HasMany(entity => entity.Specifications)
+                .WithOne(entity => entity.Product)
+                .HasForeignKey(entity => entity.IdProduct);
+
+            modelBuilder.Entity<Manufacturer>().HasKey(entity => entity.IdGuid);
+            modelBuilder.Entity<Manufacturer>()                
+                .HasMany(entity => entity.Products)
+                .WithOne(entity => entity.Manufacturer)
+                .HasForeignKey(entity => entity.IdManufacturer);               
+            
+            modelBuilder.Entity<Specification>().HasKey(entity => entity.IdGuid);
+
+            modelBuilder.Entity<Specification>()               
+                .HasOne(entity => entity.Product);
+        }
     }
 }

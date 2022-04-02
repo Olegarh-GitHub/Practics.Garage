@@ -1,4 +1,5 @@
 ﻿using Practics.Garage.Domain.Models;
+using System;
 using System.Windows.Forms;
 
 namespace Practics.Garage.Forms.Controls
@@ -20,8 +21,8 @@ namespace Practics.Garage.Forms.Controls
         {
             return new Specification()
             {
-                Name = _name.Text ?? "",
-                Value = _value.Text ?? "",
+                Name = _name.GetData() ?? "",
+                Value = _value.GetData() ?? "",
                 Type = GetSpecificationType()
             };
         }

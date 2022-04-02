@@ -39,9 +39,8 @@
             this.costPanel = new System.Windows.Forms.Panel();
             this.labelCost = new System.Windows.Forms.Label();
             this.costTextBox = new System.Windows.Forms.TextBox();
-            this.manufacturersPanel = new System.Windows.Forms.Panel();
+            this.manufacturersPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.manufacturersLabel = new System.Windows.Forms.Label();
-            this.manufacturersComboBox = new System.Windows.Forms.ComboBox();
             this.specificationContainerPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.specificationsLabel = new System.Windows.Forms.Label();
             this.specificationsPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -79,7 +78,7 @@
             this.namePanel.Controls.Add(this.nameTextBox);
             this.namePanel.Location = new System.Drawing.Point(3, 3);
             this.namePanel.Name = "namePanel";
-            this.namePanel.Size = new System.Drawing.Size(358, 44);
+            this.namePanel.Size = new System.Drawing.Size(358, 45);
             this.namePanel.TabIndex = 11;
             // 
             // nameLabel
@@ -95,7 +94,7 @@
             // nameTextBox
             // 
             this.nameTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.nameTextBox.Location = new System.Drawing.Point(0, 21);
+            this.nameTextBox.Location = new System.Drawing.Point(0, 22);
             this.nameTextBox.MaxLength = 96;
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(358, 23);
@@ -105,7 +104,7 @@
             // 
             this.descriptionPanel.Controls.Add(this.descriptionLabel);
             this.descriptionPanel.Controls.Add(this.descriptionTextBox);
-            this.descriptionPanel.Location = new System.Drawing.Point(3, 53);
+            this.descriptionPanel.Location = new System.Drawing.Point(3, 54);
             this.descriptionPanel.Name = "descriptionPanel";
             this.descriptionPanel.Size = new System.Drawing.Size(358, 136);
             this.descriptionPanel.TabIndex = 12;
@@ -135,9 +134,9 @@
             // 
             this.costPanel.Controls.Add(this.labelCost);
             this.costPanel.Controls.Add(this.costTextBox);
-            this.costPanel.Location = new System.Drawing.Point(3, 195);
+            this.costPanel.Location = new System.Drawing.Point(3, 196);
             this.costPanel.Name = "costPanel";
-            this.costPanel.Size = new System.Drawing.Size(358, 44);
+            this.costPanel.Size = new System.Drawing.Size(358, 45);
             this.costPanel.TabIndex = 13;
             // 
             // labelCost
@@ -153,7 +152,7 @@
             // costTextBox
             // 
             this.costTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.costTextBox.Location = new System.Drawing.Point(0, 21);
+            this.costTextBox.Location = new System.Drawing.Point(0, 22);
             this.costTextBox.MaxLength = 96;
             this.costTextBox.Name = "costTextBox";
             this.costTextBox.Size = new System.Drawing.Size(358, 23);
@@ -162,31 +161,19 @@
             // manufacturersPanel
             // 
             this.manufacturersPanel.Controls.Add(this.manufacturersLabel);
-            this.manufacturersPanel.Controls.Add(this.manufacturersComboBox);
-            this.manufacturersPanel.Location = new System.Drawing.Point(3, 245);
+            this.manufacturersPanel.Location = new System.Drawing.Point(3, 247);
             this.manufacturersPanel.Name = "manufacturersPanel";
-            this.manufacturersPanel.Size = new System.Drawing.Size(358, 44);
-            this.manufacturersPanel.TabIndex = 14;
+            this.manufacturersPanel.Size = new System.Drawing.Size(377, 45);
+            this.manufacturersPanel.TabIndex = 17;
             // 
             // manufacturersLabel
             // 
             this.manufacturersLabel.AutoSize = true;
-            this.manufacturersLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.manufacturersLabel.Location = new System.Drawing.Point(0, 0);
+            this.manufacturersLabel.Location = new System.Drawing.Point(3, 0);
             this.manufacturersLabel.Name = "manufacturersLabel";
             this.manufacturersLabel.Size = new System.Drawing.Size(95, 15);
             this.manufacturersLabel.TabIndex = 2;
             this.manufacturersLabel.Text = "Производитель:";
-            // 
-            // manufacturersComboBox
-            // 
-            this.manufacturersComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.manufacturersComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.manufacturersComboBox.FormattingEnabled = true;
-            this.manufacturersComboBox.Location = new System.Drawing.Point(0, 21);
-            this.manufacturersComboBox.Name = "manufacturersComboBox";
-            this.manufacturersComboBox.Size = new System.Drawing.Size(358, 23);
-            this.manufacturersComboBox.TabIndex = 1;
             // 
             // specificationContainerPanel
             // 
@@ -195,7 +182,7 @@
             this.specificationContainerPanel.Controls.Add(this.specificationsPanel);
             this.specificationContainerPanel.Controls.Add(this.addSpecificationLink);
             this.specificationContainerPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.specificationContainerPanel.Location = new System.Drawing.Point(3, 295);
+            this.specificationContainerPanel.Location = new System.Drawing.Point(3, 298);
             this.specificationContainerPanel.Name = "specificationContainerPanel";
             this.specificationContainerPanel.Size = new System.Drawing.Size(118, 36);
             this.specificationContainerPanel.TabIndex = 16;
@@ -231,7 +218,7 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(3, 337);
+            this.addButton.Location = new System.Drawing.Point(3, 340);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(358, 36);
             this.addButton.TabIndex = 0;
@@ -260,7 +247,7 @@
             this.Controls.Add(this.addPicture);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddProductForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить товар";
             this.Load += new System.EventHandler(this.AddProductForm_Load);
             this.mainPanel.ResumeLayout(false);
@@ -288,7 +275,6 @@
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label manufacturersLabel;
-        private System.Windows.Forms.ComboBox manufacturersComboBox;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Label specificationsLabel;
         private System.Windows.Forms.LinkLabel addSpecificationLink;
@@ -296,8 +282,8 @@
         private System.Windows.Forms.Panel namePanel;
         private System.Windows.Forms.Panel descriptionPanel;
         private System.Windows.Forms.Panel costPanel;
-        private System.Windows.Forms.Panel manufacturersPanel;
         private System.Windows.Forms.FlowLayoutPanel specificationContainerPanel;
         private System.Windows.Forms.FlowLayoutPanel specificationsPanel;
+        private System.Windows.Forms.FlowLayoutPanel manufacturersPanel;
     }
 }

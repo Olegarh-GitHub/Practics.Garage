@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Practics.Garage.Domain.Models.Base;
+using Practics.Garage.Forms.Controls;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -32,6 +34,15 @@ namespace Practics.Garage.Extensions
             };
 
             return textBox;
+        }
+
+        public static ComboBoxItem ToComboBoxItem<TEntity>(this TEntity entity) 
+            where TEntity : Entity, IHaveNameEntity
+        {
+            var entityName = entity.Name;
+            var entityIdGuid = entity.IdGuid;
+
+            return new ComboBoxItem(entityIdGuid, entityName);
         }
     }
 }

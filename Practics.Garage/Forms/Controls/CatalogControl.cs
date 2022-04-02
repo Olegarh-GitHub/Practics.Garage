@@ -31,7 +31,7 @@ namespace Practics.Garage.Forms.Controls
             var entities = _TFacade.Read();
             foreach (var entity in entities)
             {
-                var productControl = new BaseControl<TEntity>(entity, _parent.Width)
+                var productControl = new BaseControl<TEntity>(entity, _parent.Width, _TFacade)
                 {
                     Dock = DockStyle.Top,
                 };

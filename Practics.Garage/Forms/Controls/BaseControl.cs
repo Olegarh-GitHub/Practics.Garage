@@ -1,4 +1,7 @@
-﻿using Practics.Garage.Domain.Models.Base;
+﻿extern alias App;
+
+using App::Practics.Garage.Application.Facades.Base;
+using Practics.Garage.Domain.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,11 +20,13 @@ namespace Practics.Garage.Forms.Controls
         where TEntity : Entity, IHaveNameEntity
     {
         private readonly TEntity _entity;
+        private readonly EntityFacade<TEntity> _entityFacade;
         private readonly FlowLayoutPanel _rightSide = new();
         private readonly FlowLayoutPanel _leftSide = new();
 
-        public BaseControl(TEntity product, int width)
+        public BaseControl(TEntity product, int width, EntityFacade<TEntity> entityFacade)
         {
+            _entityFacade = entityFacade;
             _entity = product;
             Width = width;
 
@@ -34,6 +39,8 @@ namespace Practics.Garage.Forms.Controls
             _rightSide.Dock = DockStyle.Right;
             _rightSide.AutoSize = true;
             _rightSide.Padding = new Padding(10);
+            _rightSide.WrapContents = false;
+            _rightSide.FlowDirection = FlowDirection.TopDown;
 
             Paint += RenderBorders;
             Click += MainContainerClick;
@@ -98,14 +105,34 @@ namespace Practics.Garage.Forms.Controls
                 Dock = DockStyle.Top
             };
 
+            var deleteLabel = new LinkLabel()
+            {
+                Text = "Удалить Х",
+                Size = new Size(200, 20),
+                Font = new Font("Verdana", 8f, FontStyle.Underline),
+                LinkColor = Color.IndianRed,
+                ActiveLinkColor = Color.Aqua,
+                Dock = DockStyle.Top
+            };
+
+            deleteLabel.Click += DeleteLinkLabelClick;
+
             _leftSide.Controls.Add(nameLabel);
             _leftSide.Controls.Add(descriptionLabel);
+            _rightSide.Controls.Add(deleteLabel);
             _rightSide.Controls.Add(rightLabel);
         }
 
         private void MainContainerClick(object sender, EventArgs e)
         {
             MessageBox.Show($"{_entity.Name}");
+        }
+
+        private async void DeleteLinkLabelClick(object sender, EventArgs e)
+        {
+            var res = MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение", MessageBoxButtons.YesNo);
+            if(res == DialogResult.Yes)
+                await _entityFacade.Delete(_entity);
         }
 
         public TEntity GetItem()

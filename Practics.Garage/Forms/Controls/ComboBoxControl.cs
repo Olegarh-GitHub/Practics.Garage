@@ -39,8 +39,8 @@ namespace Practics.Garage.Forms.Controls
             InitializeComponent();
         }
 
-        public new Guid SelectedValue => SelectedItem is not null 
+        public new Guid? SelectedValue => SelectedItem is not null 
             ? (SelectedItem as ComboBoxItem).IdGuid 
-            : Guid.Empty;
+            : null;
     }
 }

@@ -10,7 +10,7 @@ namespace Practics.Garage.Application.Facades
     public class ProductFacade : EntityFacade<Product>
     {
         public ProductFacade(IRepository<Product> repository) : base(repository) { }
-        public async Task<Product> Create(string name, string description, decimal cost, Guid IdManufacturer, List<Specification> specifications = null)
+        public async Task<Product> Create(string name, string description, decimal cost, Guid? IdManufacturer, List<Specification> specifications = null)
         {
             var product = new Product()
             {

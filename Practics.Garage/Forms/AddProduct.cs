@@ -86,7 +86,7 @@ namespace Practics.Garage.Forms
             var cost = GetCost();
             var manufacturer = GetManufacturer();
 
-            await _productFacade.Create(name, description, cost, manufacturer.IdGuid, specifications);
+            await _productFacade.Create(name, description, cost, manufacturer?.IdGuid, specifications);
 
             Close();
             _parent.Enabled = true;

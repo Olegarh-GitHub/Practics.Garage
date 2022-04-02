@@ -12,5 +12,16 @@ namespace Practics.Garage.Application.Facades
     public class ManufacturerFacade : EntityFacade<Manufacturer>
     {
         public ManufacturerFacade(IRepository<Manufacturer> repository) : base(repository){ }
+
+        public async Task<Manufacturer> Create(string name, string description, string address)
+        {
+            var manufacturer = new Manufacturer()
+            {
+                Name = name,
+                Description = description,
+                Address = address
+            };
+            return await Create(manufacturer);
+        }
     }
 }

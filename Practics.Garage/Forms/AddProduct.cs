@@ -15,15 +15,15 @@ namespace Practics.Garage.Forms
     {
         private readonly ProductFacade _productFacade;
         private readonly ManufacturerFacade _manufacturerFacade;
-        private ManufacturerComboBoxControl _manufacturerComboBoxControl;
-        private Form _parent;
+        private ComboBoxControl<Manufacturer> _manufacturerComboBoxControl;
+        private readonly Form _parent;
         public AddProductForm(Form parent, ManufacturerFacade manufacturerFacade, ProductFacade productFacade)
         {
             _parent = parent;
 
             _productFacade = productFacade;
             _manufacturerFacade = manufacturerFacade;
-            _manufacturerComboBoxControl = new ManufacturerComboBoxControl(manufacturerFacade, 358, 23);
+            _manufacturerComboBoxControl = new ComboBoxControl<Manufacturer>(manufacturerFacade, 358, 23);
             
             InitializeComponent();
             manufacturersPanel.Controls.Add(_manufacturerComboBoxControl);
@@ -89,6 +89,11 @@ namespace Practics.Garage.Forms
             await _productFacade.Create(name, description, cost, manufacturer.IdGuid, specifications);
 
             Close();
+            _parent.Enabled = true;
+        }
+
+        private void AddProductForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
             _parent.Enabled = true;
         }
     }

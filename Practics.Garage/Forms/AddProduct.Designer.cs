@@ -249,6 +249,7 @@
             this.Name = "AddProductForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить товар";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddProductForm_FormClosed);
             this.Load += new System.EventHandler(this.AddProductForm_Load);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();

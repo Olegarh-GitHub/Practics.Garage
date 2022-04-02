@@ -33,8 +33,10 @@ namespace Practics.Garage
             services.AddTransient<IRepository<Manufacturer>, Repository<Manufacturer>>();
             services.AddTransient<IRepository<Specification>, Repository<Specification>>();
 
-            services.AddTransient<ManufacturerFacade>();
+            services.AddTransient<EntityFacade<Manufacturer>, ManufacturerFacade>();
+            services.AddTransient<EntityFacade<Product>, ProductFacade>();
             services.AddTransient<ProductFacade>();
+            services.AddTransient<ManufacturerFacade>();
 
             ServiceProvider = services.BuildServiceProvider();
         }

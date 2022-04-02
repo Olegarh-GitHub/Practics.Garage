@@ -1,6 +1,9 @@
-﻿namespace Practics.Garage.Forms.Controls
+﻿using Practics.Garage.Domain.Models.Base;
+
+namespace Practics.Garage.Forms.Controls
 {
-    partial class ManufacturerComboBoxControl
+    partial class ComboBoxControl<TEntity>
+        where TEntity : Entity, IHaveNameEntity
     {
         /// <summary>
         /// Обязательная переменная конструктора.

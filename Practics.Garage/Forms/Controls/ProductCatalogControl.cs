@@ -16,12 +16,14 @@ namespace Practics.Garage.Forms.Controls
     public partial class ProductCatalogControl : FlowLayoutPanel
     {
         private readonly ProductFacade _productFacade;
-        private Control _parent;
+        private readonly Control _parent;
 
         public ProductCatalogControl(ProductFacade productFacade, Control parent)
         {
             _productFacade = productFacade;
             _parent = parent;
+
+            Dock = DockStyle.Fill;
 
             InitializeComponent();
 

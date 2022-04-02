@@ -34,12 +34,19 @@ namespace Practics.Garage.Forms
 
         private void FillProductCatalog()
         {
-            catalogPanel.Controls.Add(new ProductCatalogControl(_productFacade, catalogPanel));
+            catalogProductsPanel.Controls.Add(new ProductCatalogControl(_productFacade, catalogProductsPanel));
         }
 
         private void addVehiclePartButton_Click(object sender, EventArgs e)
         {
             var addForm = new AddProductForm(this, _manufacturerFacade, _productFacade);
+            addForm.Show();
+            Enabled = false;
+        }
+
+        private void addManufacturerButton_Click(object sender, EventArgs e)
+        {
+            var addForm = new AddManufacturer(this, _manufacturerFacade);
             addForm.Show();
             Enabled = false;
         }

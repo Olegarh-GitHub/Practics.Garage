@@ -1,7 +1,9 @@
 ﻿extern alias App;
 
 using App::Practics.Garage.Application.Facades;
+using App::Practics.Garage.Application.Facades.Base;
 using Practics.Garage.Domain.Models;
+using Practics.Garage.Domain.Models.Base;
 using Practics.Garage.Domain.Repository.Base;
 using Practics.Garage.Extensions;
 using System;
@@ -15,22 +17,23 @@ using System.Windows.Forms;
 
 namespace Practics.Garage.Forms.Controls
 {
-    public partial class ManufacturerComboBoxControl : ComboBox
+    public partial class ComboBoxControl<TEntity> : ComboBox
+        where TEntity : Entity, IHaveNameEntity
     {
-        private readonly ManufacturerFacade _manufacturerFacade;
+        private readonly EntityFacade<TEntity> _entityFacade;
 
-        public ManufacturerComboBoxControl(ManufacturerFacade manufacturerFacade, int width, int height)
+        public ComboBoxControl(EntityFacade<TEntity> entityFacade, int width, int height)
         {
-            _manufacturerFacade = manufacturerFacade;
+            _entityFacade = entityFacade;
 
-            var manufacturers = _manufacturerFacade
+            var entities = _entityFacade
                 .Read()
-                .Select(manufacturer => manufacturer.ToComboBoxItem())
+                .Select(entity => entity.ToComboBoxItem())
                 .ToList();
 
             Width = width;
             Height = height;
-            DataSource = manufacturers;
+            DataSource = entities;
             DropDownStyle = ComboBoxStyle.DropDownList;
 
             InitializeComponent();

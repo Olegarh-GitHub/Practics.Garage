@@ -34,7 +34,8 @@ namespace Practics.Garage.Forms
 
         private void FillProductCatalog()
         {
-            catalogProductsPanel.Controls.Add(new ProductCatalogControl(_productFacade, catalogProductsPanel));
+            catalogProductsPanel.Controls.Add(new CatalogControl<Product, Panel>(_productFacade, catalogProductsPanel));
+            catalogManufacturersPanel.Controls.Add(new CatalogControl<Manufacturer, Panel>(_manufacturerFacade, catalogProductsPanel));
         }
 
         private void addVehiclePartButton_Click(object sender, EventArgs e)

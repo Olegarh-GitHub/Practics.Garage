@@ -20,7 +20,7 @@ namespace Practics.Garage.Application.UseCases.CRUD
 
         public ReadEntityResponse<TEntity> Execute()
         {
-            return new ReadEntityResponse<TEntity> { Entities = _repository.Read() };
+            return new ReadEntityResponse<TEntity>() { Entities = _repository.Read() };
         }
     }
 }

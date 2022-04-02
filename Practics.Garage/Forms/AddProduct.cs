@@ -60,6 +60,15 @@ namespace Practics.Garage.Forms
             return descriptionTextBox.Text;
         }
 
+        private decimal GetCost()
+        {
+            var tryParse = decimal.TryParse(costTextBox.Text, out var result);
+
+            if (tryParse) return result;
+
+            return 0m;
+        }
+
         private Manufacturer GetManufacturer()
         {
             var idManufacturer = _manufacturerComboBoxControl.SelectedValue;
@@ -74,9 +83,10 @@ namespace Practics.Garage.Forms
             var specifications = GetSpecifications();
             var name = GetName();
             var description = GetDescription();
+            var cost = GetCost();
             var manufacturer = GetManufacturer();
 
-            await _productFacade.Create(name, description, manufacturer.IdGuid, specifications);
+            await _productFacade.Create(name, description, cost, manufacturer.IdGuid, specifications);
 
             Close();
             _parent.Enabled = true;

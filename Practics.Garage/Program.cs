@@ -51,7 +51,14 @@ namespace Practics.Garage
 
             ConfigureServices();
 
-            Application.Run(new CatalogForm());
+            Application.Run
+            (
+                new CatalogForm
+                (
+                    ServiceProvider.GetRequiredService<ManufacturerFacade>(), 
+                    ServiceProvider.GetRequiredService<ProductFacade>()
+                )
+            );
         }
     }
 }

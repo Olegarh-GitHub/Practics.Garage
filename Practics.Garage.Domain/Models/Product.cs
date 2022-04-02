@@ -13,7 +13,11 @@ namespace Practics.Garage.Domain.Models
         public string Name { get; set; }
 
         [DisplayName("Описание товара")]
-        public string Description { get; set; }  
+        public string Description { get; set; } 
+        
+        [DisplayName("Стоимость товара")]
+        public decimal Cost { get; set; }
+
         public Guid IdManufacturer { get; set; }
 
         [ComplexProperty]

@@ -19,5 +19,11 @@
     <Compile Update="Forms\Controls\ManufacturerComboBoxControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Forms\Controls\ProductCatalogControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Forms\Controls\ProductControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

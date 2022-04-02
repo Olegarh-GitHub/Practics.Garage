@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace Practics.Garage.Infrastructure.Contexts
 {
@@ -38,6 +39,17 @@ namespace Practics.Garage.Infrastructure.Contexts
 
             modelBuilder.Entity<Specification>()               
                 .HasOne(entity => entity.Product);
+        }
+    }
+    
+    public class ApplicationContextFactory : IDesignTimeDbContextFactory<ApplicationContext>
+    {
+        public ApplicationContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = Garage");
+
+            return new ApplicationContext(optionsBuilder.Options);
         }
     }
 }

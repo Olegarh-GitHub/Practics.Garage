@@ -3,6 +3,7 @@
 using App::Practics.Garage.Application.Facades;
 using Microsoft.Extensions.DependencyInjection;
 using Practics.Garage.Domain.Models;
+using Practics.Garage.Forms.Controls;
 using Practics.Garage.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
@@ -21,17 +22,19 @@ namespace Practics.Garage.Forms
         private readonly ManufacturerFacade _manufacturerFacade;
         private readonly ProductFacade _productFacade;
 
-        public CatalogForm()
+        public CatalogForm(ManufacturerFacade manufacturerFacade, ProductFacade productFacade)
         {
-            _manufacturerFacade = Program.ServiceProvider.GetService<ManufacturerFacade>();
-            _productFacade = Program.ServiceProvider.GetService<ProductFacade>();
+            _manufacturerFacade = manufacturerFacade;
+            _productFacade = productFacade;
 
             InitializeComponent();
+
+            FillProductCatalog();
         }
 
-        private void FillCatalog()
+        private void FillProductCatalog()
         {
-
+            catalogPanel.Controls.Add(new ProductCatalogControl(_productFacade, catalogPanel));
         }
 
         private void addVehiclePartButton_Click(object sender, EventArgs e)

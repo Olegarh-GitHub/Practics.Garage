@@ -79,7 +79,7 @@ namespace Practics.Garage.Forms.Controls
 
             nameLabel.Click += MainContainerClick;
 
-            var costLabel = new Label()
+            var rightLabel = new Label()
             {
                 Text = entityProperties[2].GetValue(_entity).ToString(),
                 Size = new Size(250, 25),
@@ -100,7 +100,7 @@ namespace Practics.Garage.Forms.Controls
 
             _leftSide.Controls.Add(nameLabel);
             _leftSide.Controls.Add(descriptionLabel);
-            _rightSide.Controls.Add(costLabel);
+            _rightSide.Controls.Add(rightLabel);
         }
 
         private void MainContainerClick(object sender, EventArgs e)

@@ -18,7 +18,7 @@ namespace Practics.Garage.Domain.Models
         [DisplayName("Стоимость товара")]
         public decimal Cost { get; set; }
 
-        public Guid IdManufacturer { get; set; }
+        public Guid? IdManufacturer { get; set; }
 
         [ComplexProperty]
         public Manufacturer Manufacturer { get; set; }
